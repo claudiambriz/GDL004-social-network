@@ -1,7 +1,7 @@
 import { emailFirebase } from '../model/registroEmail.js';
 import { controlador } from '../controler/router.js';
 
-
+// RESGISTRO
 const signUpArguments = {
   init: () => {
     const form = document.getElementById('formSignUp');
@@ -15,36 +15,36 @@ const signUpArguments = {
       // Construyendo el then (caso exitoso)
       promisesSigUp.then(() => {
         alert('registro exitoso');
-        controlador.changeView('#/home');
-
-      })
-
+        controlador.changeView('#/logIn');
+      });
+      promisesSigUp.catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        if (errorCode === 'auth/wrong-password') {
+          alert('Upss contraseña incorrecta');
+        } else if (errorCode === 'auth/invalid-email') {
+          alert('correo inválido');
+        } else {
+          alert(errorMessage);
+        }
+      });
     });
   },
 };
-
-const loggeoArguments = {
-  init: () => {
-    const form = document.getElementById('formLogIn');
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
-      const emailValues = {
-        email: form.inputEmail.value,
-        password: form.inputPassword.value,
-      };
-      form.reset();
-      emailFirebase.logIn(emailValues.email, emailValues.password);
-    });
-  },
-};
+// // INICIAR SESION
+// const loggeoArguments = {
+//   init: () => {
+//     const form = document.getElementById('formLogIn');
+//     form.addEventListener('submit', (e) => {
+//       e.preventDefault();
+//       const emailValues = {
+//         email: form.inputEmail.value,
+//         password: form.inputPassword.value,
+//       };
+//       form.reset();
+//       emailFirebase.logIn(emailValues.email, emailValues.password);
+//     });
+//   },
+// };
 
 export { loggeoArguments, signUpArguments };
-
-/* frank
-  registroEmail.LogIn(form.inputEmail.value, emailValues.password)
-  .then((data) => {
-     //redirect home
-  })
-  .catch((data) => {
-   //redirect a login
-  }); */
