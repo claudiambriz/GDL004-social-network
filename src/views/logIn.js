@@ -1,3 +1,5 @@
+import { loggeoArguments } from './index.js';
+
 export default () => {
   const divElement = document.createElement('div');
   divElement.setAttribute('id', 'divElement');
@@ -42,16 +44,24 @@ export default () => {
   inputPassword.setAttribute('id', 'inputPassword');
   inputPassword.setAttribute('placeholder', 'Escribe tu contraseña');
   // Creando el botón que hará el inición se sesión con la función de firebase
-  const button = document.createElement('input');
-  button.setAttribute('type', 'submit');
+  const button = document.createElement('button');
+  
+  //button.setAttribute('type', 'submit');
+  button.innerHTML = 'Iniciar sesión';
   button.setAttribute('value', 'Iniciar sesión');
+  formLogIn.addEventListener('submit', (e) => {
+    e.preventDefault();
+    loggeoArguments.init();
+    window.location.hash = '#/home';
+  });
   formLogIn.appendChild(button);
 
+  // DIV donde está el link 
   const link = document.createElement('div');
   link.setAttribute('id', 'link');
   const aLink = document.createElement('a');
   link.appendChild(aLink);
-  aLink.setAttribute('href', '#/signUp');
+  aLink.setAttribute('href', '#/signup');
   const template2 = `<span> ${'¿Aun no tienes cuenta en chocolat? REGÍSTRATE'} </span>`;
   aLink.innerHTML = template2;
   divElement.appendChild(link);

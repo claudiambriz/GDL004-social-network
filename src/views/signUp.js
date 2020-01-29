@@ -1,3 +1,5 @@
+import { signUpArguments } from './index.js';
+
 export default () => {
   const divElement = document.createElement('div');
   divElement.setAttribute('id', 'divElement');
@@ -22,9 +24,16 @@ export default () => {
   inputPassword1.setAttribute('name', 'inputPassword1');
   inputPassword1.setAttribute('placeholder', 'Escribe tu contraseña');
   // Creando el botón que hará en registro del correo con la función de firebase
-  const button1 = document.createElement('input');
-  button1.setAttribute('type', 'submit');
+  const button1 = document.createElement('button');
+
+  // button1.setAttribute('type', 'submit');
+  button1.innerHTML = 'Regístrate';
   button1.setAttribute('value', 'Regístrate');
+  formSignUp.addEventListener('submit', (e) => {
+    e.preventDefault();
+    signUpArguments.init();
+    // window.location.hash = '#/login';
+  });
   formSignUp.appendChild(button1);
 
   return divElement;
