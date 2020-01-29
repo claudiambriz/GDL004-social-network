@@ -2,7 +2,7 @@ import Home from '../views/home.js';
 import LogIn from '../views/logIn.js';
 import SignUp from '../views/signUp.js';
 import Different from '../views/page404.js';
-import SignUp from '../views/signUp.js';
+
 
 export const components = {
   home: Home,
@@ -18,8 +18,8 @@ export const controlador = {
     container.innerHTML = '';
 
     switch (hash) {
+      case ' ':
       case '#/':
-      case '#':
       case '#/logIn':
         container.appendChild(components.logIn());
         break;
