@@ -12,12 +12,6 @@ export const components = {
 };
 
 export const controlador = {
-  /* El init de loggeoArguments es un método que creamos en index.js y que contiene la función 
-  que recibe los argumentos de login y de signup respectivamente */
-  // init: () => {
-  //   loggeoArguments.init();
-  //   signUpArguments.init();
-  // },
 
   changeView: (hash) => {
     const container = document.getElementById('container');
@@ -40,3 +34,11 @@ export const controlador = {
     }
   },
 };
+
+/* El init de loggeoArguments es un método que creamos en index.js y que contiene la función
+que recibe los argumentos de login y de signup respectivamente. lo cambiamos porque se estaba
+ciclando la función.
+ init: () => {
+  loggeoArguments.init();
+  signUpArguments.init();
+}; */

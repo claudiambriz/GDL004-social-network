@@ -17,8 +17,8 @@ const signUpArguments = {
       promisesSignUp.then(() => {
         alert('registro exitoso');
         controlador.changeView('#/logIn');
-      });
-      promisesSignUp.catch((error) => {
+      // location.hash= 
+      }).catch((error) => {
         const errorCode = error.code;
         const errorMessage = error.message;
         if (errorCode === 'auth/wrong-password') {
@@ -44,12 +44,14 @@ const loggeoArguments = {
       form.reset();
       const promisesLogIn = emailFirebase.logIn(email, password);
       promisesLogIn.then(() => {
-        alert('te has loggeado');
         controlador.changeView('#/home');
+      }).catch((error) => {
+        let errorCode = error.code;
+        let errorMessage = error.message;
+        alert(errorMessage);
       });
     });
   },
 };
-
 
 export { loggeoArguments, signUpArguments };
