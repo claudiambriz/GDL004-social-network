@@ -20,27 +20,18 @@ export const emailFirebase = {
     });
   },
 
-  // FUNCTION that triggers with the SignUp button with the Firestore Auth but also closes de modal
+  // FUNCTION that creates a new user with the email.
   toSignUp: (email, passwordEmail) => {
     const promiseSignUp = firebase.auth().createUserWithEmailAndPassword(email, passwordEmail);
     return promiseSignUp;
+    // el return lo que regresa es la promesa
   },
 
-  // FUNCTION that makes login once the user has already signup with the email.
-  logIn: (emailL, passwordL) => {
-    firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
-      .catch((error) => {
-        let errorCode = error.code;
-        let errorMessage = error.message;
-        if (errorCode === 'auth/wrong-password') {
-          alert('Upss contraseña incorrecta');
-        } else if (errorCode === 'auth/invalid-email') {
-          alert('correo inválido');
-        } else {
-          alert(errorMessage);
-        }
-      })
-  }
+  // FUNCTION that makes LOGIN once the user has already signup with the email.
+  logIn: (email, password) => {
+    const promiseLogIn = firebase.auth().signInWithEmailAndPassword(email, password);
+    return promiseLogIn;
+  },
 };
 
 /*  ESTA FUNCIÓN CIERRA SESIÓN DE LA APLICACIÓN
@@ -52,18 +43,3 @@ export function toSignOut() {
   });
 }
 */
-
-
-// logIn: (emailL, passwordL) => {
-//   firebase.auth().signInWithEmailAndPassword(emailL, passwordL)
-//     .catch((error) => {
-//       let errorCode = error.code;
-//       let errorMessage = error.message;
-//       if (errorCode === 'auth/wrong-password') {
-//         alert('Upss contraseña incorrecta');
-//       } else if (errorCode === 'auth/invalid-email') {
-//         alert('correo inválido');
-//       } else {
-//         alert(errorMessage);
-//       }
-//     })

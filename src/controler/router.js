@@ -1,9 +1,10 @@
 import Home from '../views/home.js';
 import LogIn from '../views/logIn.js';
+import SignUp from '../views/signUp.js';
 import Different from '../views/page404.js';
 import SignUp from '../views/signUp.js';
 
-const components = {
+export const components = {
   home: Home,
   logIn: LogIn,
   different: Different,
@@ -11,6 +12,12 @@ const components = {
 };
 
 export const controlador = {
+  /* El init de loggeoArguments es un método que creamos en index.js y que contiene la función 
+  que recibe los argumentos de login y de signup respectivamente */
+  // init: () => {
+  //   loggeoArguments.init();
+  //   signUpArguments.init();
+  // },
 
   changeView: (hash) => {
     const container = document.getElementById('container');

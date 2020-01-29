@@ -4,10 +4,13 @@ import { loggeoArguments, signUpArguments } from './views/index.js';
 
 const init = () => {
   router.changeView(window.location.hash);
-   // El init de loggeoArguments es un método que creamos en index.js y que contiene la función que recibe los argumentos de login y de signup
-  loggeoArguments.init();
-  signUpArguments.init();
+// El init de loggeoArguments es un método que creamos en index.js y que contiene la función que recibe los argumentos de login y de signup 
   window.addEventListener('hashchange', () => router.changeView(window.location.hash));
+  if (window.location.hash === '#/logIn') {
+    loggeoArguments.init();
+  } else if (window.location.hash === '#/signUp') {
+    signUpArguments.init();
+  }
 };
 
 window.addEventListener('load', init);
